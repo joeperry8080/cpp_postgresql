@@ -1,0 +1,10 @@
+# Ignore the secret credentials file
+cmake-build-debug/.env
+
+# Ignore build folders (standard C++ practice)
+build/
+cmake-build-debug/
+cmake-build-release/
+.vscode/
+.idea/
+*.o
