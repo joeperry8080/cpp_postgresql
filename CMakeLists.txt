@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.20)
-project(PostgresConnection)
+project(cpp_postgresql)
 
-# libpqxx 8.0+ requires C++20
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_PREFIX_PATH "C:/msys64/ucrt64")
 
-# Find the libpqxx package
+# Look for the C++ wrapper
 find_package(libpqxx REQUIRED)
 
-add_executable(PostgresConnection main.cpp
-        database.h
+add_executable(cpp_postgresql
+        main.cpp
+        database.cpp
         country_count.cpp
-        country_count.h
-        database.cpp)
+)
 
-# Link the library to your executable
-target_link_libraries(PostgresConnection PRIVATE libpqxx::pqxx)
+# Link both
+target_link_libraries(cpp_postgresql PRIVATE libpqxx::pqxx)
 
-# Copy .env to the build directory automatically
+# Automatically copy .env to the folder where the .exe lives
 configure_file(.env .env COPYONLY)
