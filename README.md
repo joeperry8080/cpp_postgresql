@@ -26,12 +26,27 @@ sudo apt-get install libpqxx-dev
 brew install libpqxx
 ```
 
-### Windows (Using vcpkg)
-1. Install [vcpkg](https://github.com/microsoft/vcpkg).
-2. Run: `vcpkg install libpqxx:x64-windows`
-3. In CLion or VS Code, point your CMake toolchain to the `vcpkg.cmake` file.
+### Windows using MSYS2
 
----
+* Install MSYS2 from https://www.msys2.org/ using defaults.
+* When running pacman use defaults (all) as well.
+
+```bash
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain	
+pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-toolchain
+pacman -S mingw-w64-ucrt-x86_64-postgresql
+pacman -S mingw-w64-ucrt-x86_64-libpqxx
+```
+
+### CLion Windows toolchain settings
+
+<img width="1242" height="736" alt="clion_win_settings" src="https://github.com/user-attachments/assets/b5b2c71f-a154-4431-8447-ad09521e0f12" />
+
+
+## In Windows you can't compile directly in CLion
+```bash
+g++ main.cpp database.cpp country_count.cpp -o main.exe -lpqxx -lpq
+```
 
 ## 📂 Project Structure
 
